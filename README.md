@@ -1,6 +1,6 @@
 <div align="center">
 
-# HỆ THỐNG QUẢN LÝ LỊCH HỌC VÀ THÔNG BÁO CHO HỌC SINH
+# HỆ THỐNG QUẢN LÝ HỌC VỤ CHO HỌC SINH THPT
 
 <p align="center">
   <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel">
@@ -59,7 +59,7 @@ Hệ thống quản lý lịch học và thông báo là một ứng dụng web 
 
 ### Bước 1: Clone repository
 
-- git clone https://github.com/[your-username]/CNPM.git (gitbash)
+- git clone https://github.com/im-Hip/QLy_Hoc_Vu.git (gitbash)
 - cd CNPM
 
 ### Bước 2: Cài đặt PHP dependencies
