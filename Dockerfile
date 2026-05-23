@@ -1,4 +1,4 @@
-FROM php:8.2-cli
+FROM php:8.2-apache
 
 RUN apt-get update && apt-get install -y \
     git unzip curl libzip-dev zip \
@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-WORKDIR /app
+WORKDIR /var/www/html
 
 COPY . .
 
@@ -14,6 +14,15 @@ RUN composer install --no-dev --optimize-autoloader
 
 RUN php artisan config:clear
 
-EXPOSE 10000
+RUN chown -R www-data:www-data storage bootstrap/cache
 
-CMD sh -c "php artisan serve --host=0.0.0.0 --port=${PORT:-10000}"
+RUN a2enmod rewrite
+
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
+    /etc/apache2/sites-available/*.conf \
+    /etc/apache2/apache2.conf \
+    /etc/apache2/conf-available/*.conf
+
+EXPOSE 80
