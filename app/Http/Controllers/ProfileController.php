@@ -8,10 +8,31 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Student;
+use App\Models\Teacher;
+use App\Models\Classes; 
+
 
 class ProfileController extends Controller
 {
-    public const HOME = '/redirect';
+    public function show()
+    {
+        // Lấy user hiện tại
+        $profileData = Auth::user();
+
+        // Nếu là học sinh, load thêm thông tin student
+        if ($profileData->role === 'student') {
+            $profileData->load('student.class'); 
+        }
+
+        // Nếu là giáo viên, load thêm thông tin teacher (nếu bạn có quan hệ teacher)
+        if ($profileData->role === 'teacher') {
+            $profileData->load('teacher'); 
+        }
+
+        return view('profile.show', compact('profileData'));
+    }
+
     /**
      * Display the user's profile form.
      */

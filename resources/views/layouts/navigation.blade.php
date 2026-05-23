@@ -140,6 +140,15 @@
         </li>
 
         <li>
+            <a href="{{ route('profile') }}"
+               class="flex items-center w-full px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-300 group">
+                <img src="{{ asset('images/Profile.png') }}" alt="Hồ sơ" class="w-6 h-6 mr-3">
+                <span class="font-medium">ㅤHồ sơ</span>
+            </a>
+
+        </li>
+
+        <li>
             <a href="{{ route('schedules.index') }}"
                 class="flex items-center px-4 py-3 rounded-lg transition-all duration-300 group relative overflow-hidden
                    {{ str_contains($currentRoute, 'schedules') ? 'bg-blue-600 text-white shadow-md' : 'text-gray-600 hover:bg-gray-50' }}">
@@ -189,6 +198,15 @@
                     class="w-6 h-6 mr-3 transition-transform duration-300 group-hover:scale-110 relative z-10">
                 <span class="font-medium relative z-10">ㅤTrang chủ</span>
             </a>
+        </li>
+
+        <li>
+            <a href="{{ route('profile') }}"
+               class="flex items-center w-full px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-300 group">
+                <img src="{{ asset('images/Profile.png') }}" alt="Hồ sơ" class="w-6 h-6 mr-3">
+                <span class="font-medium">ㅤHồ sơ</span>
+            </a>
+
         </li>
 
         <li>

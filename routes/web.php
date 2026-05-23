@@ -53,6 +53,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+// Nếu profile là trang cá nhân của user đang đăng nhập
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile');
 
 // Role redirect (auth)
 Route::get('/redirect', [RoleRedirectController::class, 'redirect'])->middleware('auth');
@@ -136,5 +138,3 @@ Route::get('/health', function () {
 
 // Auth routes (Breeze/Jetstream – handle login/register/logout)
 require __DIR__.'/auth.php';
-
-// test pipeline
