@@ -1,44 +1,17 @@
-FROM php:8.2-fpm
+FROM php:8.2-cli
 
-WORKDIR /var/www/html
-
-# Install dependencies
 RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    libzip-dev \
-    zip \
-    unzip \
-    nginx
+    git unzip curl libzip-dev zip \
+    && docker-php-ext-install pdo pdo_mysql zip
 
-# Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
-
-# Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copy project files
+WORKDIR /app
+
 COPY . .
 
-# Install dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+RUN composer install --no-dev --optimize-autoloader
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+EXPOSE 10000
 
-# Copy nginx config
-COPY nginx.conf /etc/nginx/sites-available/default
-
-# Expose port
-EXPOSE 8080
-
-# Start services
-CMD php artisan config:cache && \
-    php artisan route:cache && \
-    php artisan migrate --force && \
-    php artisan storage:link && \
-    service nginx start && \
-    php-fpm
+CMD php artisan serve --host=0.0.0.0 --port=10000
