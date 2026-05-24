@@ -1,7 +1,7 @@
 FROM php:8.2-apache
 
 RUN apt-get update && apt-get install -y \
-    git unzip curl libzip-dev zip \
+    git unzip curl libzip-dev zip nodejs npm \
     && docker-php-ext-install pdo_mysql zip bcmath
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -12,9 +12,13 @@ COPY . .
 
 RUN composer install --no-dev --optimize-autoloader
 
+RUN npm install
+RUN npm run build
+
 RUN php artisan config:clear
 
 RUN chown -R www-data:www-data storage bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache
 
 RUN a2enmod rewrite
 
