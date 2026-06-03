@@ -15,6 +15,9 @@ class StudentSeeder extends Seeder
         $class = Classes::where('name', '10A1')->first();
         Student::create([
             'id' => $studentUser->id,
+            'student_id' => 'HS001',
+            'day_of_birth' => '2008-01-01',
+            'gender' => 'male',
             'class_id' => $class->id,
             'created_at' => now(),
             'updated_at' => now(),
@@ -24,6 +27,9 @@ class StudentSeeder extends Seeder
         $class2 = Classes::where('name', '11A1')->first();
         Student::create([
             'id' => $studentUser2->id,
+            'student_id' => 'HS002',
+            'day_of_birth' => '2008-02-01',
+            'gender' => 'female',
             'class_id' => $class2->id,
             'created_at' => now(),
             'updated_at' => now(),

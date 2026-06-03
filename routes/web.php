@@ -4,13 +4,14 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\StatisticsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RoleRedirectController;
+use App\Http\Controllers\Auth\RoleRedirectController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\TeacherAssignmentController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\FaceAuthController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -140,5 +141,14 @@ Route::get('/test', function () {
     return 'Laravel is running';
 });
 
+
+Route::middleware('auth')->group(function () {
+    Route::get('/face/register', [FaceAuthController::class, 'create'])->name('face.register');
+    Route::post('/face/register', [FaceAuthController::class, 'store'])->name('face.store');
+});
+
+Route::post('/face/login', [FaceAuthController::class, 'login'])
+    ->middleware('throttle:6,1')
+    ->name('face.login');
 // Auth routes (Breeze/Jetstream – handle login/register/logout)
 require __DIR__.'/auth.php';

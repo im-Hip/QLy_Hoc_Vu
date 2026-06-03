@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<nav class="flex-1 px-4 py-6 overflow-y-auto">
+<nav class="flex-1 px-4 py-6 pb-32 overflow-y-auto">
     @php
     $currentRoute = request()->route()->getName();
     @endphp
@@ -48,6 +48,18 @@
                     alt="Trang chủ"
                     class="w-6 h-6 mr-3 transition-transform duration-300 group-hover:scale-110 relative z-10">
                 <span class="font-medium relative z-10">ㅤTrang chủ</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('profile') }}"
+                class="flex items-center px-4 py-3 rounded-lg transition-all duration-300 group relative overflow-hidden
+                   {{ in_array($currentRoute, ['profile', 'face.register']) ? 'bg-blue-600 text-white shadow-md' : 'text-gray-600 hover:bg-gray-50' }}">
+                <span class="absolute inset-0 w-full h-full transition-all duration-500 transform translate-x-[-100%] group-hover:translate-x-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"></span>
+                <img src="{{ asset('images/Profile.png') }}"
+                    alt="Hồ sơ"
+                    class="w-6 h-6 mr-3 transition-transform duration-300 group-hover:scale-110 relative z-10">
+                <span class="font-medium relative z-10">ㅤHồ sơ</span>
             </a>
         </li>
 
@@ -141,11 +153,14 @@
 
         <li>
             <a href="{{ route('profile') }}"
-               class="flex items-center w-full px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-300 group">
-                <img src="{{ asset('images/Profile.png') }}" alt="Hồ sơ" class="w-6 h-6 mr-3">
-                <span class="font-medium">ㅤHồ sơ</span>
+                class="flex items-center px-4 py-3 rounded-lg transition-all duration-300 group relative overflow-hidden
+                   {{ in_array($currentRoute, ['profile', 'face.register']) ? 'bg-blue-600 text-white shadow-md' : 'text-gray-600 hover:bg-gray-50' }}">
+                <span class="absolute inset-0 w-full h-full transition-all duration-500 transform translate-x-[-100%] group-hover:translate-x-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"></span>
+                <img src="{{ asset('images/Profile.png') }}"
+                    alt="Hồ sơ"
+                    class="w-6 h-6 mr-3 transition-transform duration-300 group-hover:scale-110 relative z-10">
+                <span class="font-medium relative z-10">ㅤHồ sơ</span>
             </a>
-
         </li>
 
         <li>
@@ -202,11 +217,14 @@
 
         <li>
             <a href="{{ route('profile') }}"
-               class="flex items-center w-full px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-all duration-300 group">
-                <img src="{{ asset('images/Profile.png') }}" alt="Hồ sơ" class="w-6 h-6 mr-3">
-                <span class="font-medium">ㅤHồ sơ</span>
+                class="flex items-center px-4 py-3 rounded-lg transition-all duration-300 group relative overflow-hidden
+                   {{ in_array($currentRoute, ['profile', 'face.register']) ? 'bg-blue-600 text-white shadow-md' : 'text-gray-600 hover:bg-gray-50' }}">
+                <span class="absolute inset-0 w-full h-full transition-all duration-500 transform translate-x-[-100%] group-hover:translate-x-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"></span>
+                <img src="{{ asset('images/Profile.png') }}"
+                    alt="Hồ sơ"
+                    class="w-6 h-6 mr-3 transition-transform duration-300 group-hover:scale-110 relative z-10">
+                <span class="font-medium relative z-10">ㅤHồ sơ</span>
             </a>
-
         </li>
 
         <li>
