@@ -35,6 +35,13 @@
                 </div>
             </div>
 
+
+            <div class="mt-8 flex justify-center">
+                <a href="{{ route('face.register') }}"
+                   class="inline-flex items-center rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow hover:bg-blue-700">
+                    Đăng ký khuôn mặt
+                </a>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
                 {{-- Logic cho HỌC SINH --}}

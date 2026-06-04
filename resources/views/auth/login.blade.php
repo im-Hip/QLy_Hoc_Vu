@@ -134,6 +134,42 @@
             </button>
         </div>
     </form>
+    <div class="mt-5 animate-fadeInUp">
+        <button type="button"
+                data-face-open-login="#face-login-modal"
+                class="w-full rounded-xl border-2 border-blue-200 bg-white/90 px-6 py-3 font-bold text-blue-700 shadow-sm transition-all duration-300 hover:border-blue-500 hover:bg-blue-50">
+            Đăng nhập bằng khuôn mặt
+        </button>
+    </div>
+
+    <div id="face-login-modal" data-face-login-modal class="fixed inset-0 z-50 hidden bg-black/60 p-4">
+        <div class="mx-auto mt-8 max-w-3xl rounded-2xl bg-white p-6 shadow-2xl">
+            <div class="mb-4 flex items-center justify-between">
+                <h3 class="text-xl font-bold text-gray-800">Đăng nhập bằng khuôn mặt</h3>
+                <button type="button" data-face-close-login class="rounded-lg px-3 py-1 text-gray-500 hover:bg-gray-100">Đóng</button>
+            </div>
+
+            <div data-face-mode="login" data-face-submit-url="{{ route('face.login') }}" class="grid gap-4 md:grid-cols-[minmax(0,1fr)_240px]">
+                <div class="rounded-xl bg-gray-900 p-3">
+                    <video data-face-video autoplay muted playsinline class="h-[320px] w-full rounded-lg bg-black object-cover"></video>
+                </div>
+
+                <div class="space-y-3">
+                    <div data-face-status class="rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-sm text-blue-700">
+                        Mở webcam, nhìn thẳng camera và chỉ để một khuôn mặt trong khung hình.
+                    </div>
+
+                    <button type="button" data-face-start class="w-full rounded-lg bg-blue-600 px-4 py-3 font-semibold text-white hover:bg-blue-700">
+                        Mở webcam
+                    </button>
+
+                    <button type="button" data-face-capture class="w-full rounded-lg bg-green-600 px-4 py-3 font-semibold text-white hover:bg-green-700" disabled>
+                        Xác thực khuôn mặt
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <style>
         /* Animations */

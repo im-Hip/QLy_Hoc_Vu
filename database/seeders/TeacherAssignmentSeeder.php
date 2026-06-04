@@ -7,6 +7,7 @@ use App\Models\TeacherAssignment;
 use App\Models\Classes;
 use App\Models\Subject;
 use App\Models\Teacher;
+use App\Models\User;
 
 class TeacherAssignmentSeeder extends Seeder
 {
